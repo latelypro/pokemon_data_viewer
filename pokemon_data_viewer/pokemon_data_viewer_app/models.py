@@ -15,7 +15,7 @@ class PokemonData(models.Model):
     evolutions = models.CharField(max_length=255)
     abilities = models.CharField(max_length=255)
     hiddenAbilities = models.CharField(max_length=255)
-    
+    form = models.CharField(max_length=255,default="")
     def __str__(self):
         return self.name
 
