@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+        <title> Pokemon Data Viewer</title>
+    </head>
+    <header class="site-header">
+        <p class="site-title" href="{% url 'index' %}">Pokemon Data Viewer</p>
+    </header>
+    <body>
+        {% block content %}
+        {% endblock content%}
+        {% block script %}
+        {% endblock script %}
+    </body>
+</html>

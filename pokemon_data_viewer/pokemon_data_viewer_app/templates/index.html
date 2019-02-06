@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="list-header">
+        <p class="label">図鑑No.</p>
+        <p class="label">名前</p>
+        <p class="label">HP</p>
+        <p class="label">こうげき</p>
+        <p class="label">ぼうぎょ</p>
+        <p class="label">とくこう</p>
+        <p class="label">とくぼう</p>
+        <p class="label-end">すばやさ</p>
+    </div>
+    {% for data in pokemon_data_list %}
+    <a href="{% url 'detail' data.pk %}">
+        <div class="dataset">
+            <p class="data">{{ data.no }}</p>
+            <p class="data">{{ data.name }}</p>
+            <p class="data">{{ data.hp }}</p>
+            <p class="data">{{ data.attack }}</p>
+            <p class="data">{{ data.defence }}</p>
+            <p class="data">{{ data.spAttack }}</p>
+            <p class="data">{{ data.spDefence }}</p>
+            <p class="data-end">{{ data.speed }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock content%}
+{% block script %}
+{% endblock script %}
