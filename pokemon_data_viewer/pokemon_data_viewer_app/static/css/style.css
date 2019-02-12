@@ -36,6 +36,7 @@ body {
     min-width: 128px;
     border-color: #97969683;
     border-style: none solid solid none;
+    flex-grow: 1;
 }
 
 .label-end {
@@ -45,6 +46,7 @@ body {
     min-width: 128px;
     border-color: #97969683;
     border-style: none none solid none;
+    flex-grow: 1;
 }
 
 .dataset {
@@ -59,6 +61,7 @@ body {
     min-width: 128px;
     border-color: #97969683;
     border-style: none solid solid none;
+    flex-grow: 1;
 }
 .data-end {
     margin: 0 0 0 0;
@@ -67,4 +70,5 @@ body {
     min-width: 128px;
     border-color: #97969683;
     border-style: none none solid none;
+    flex-grow: 1;
 }

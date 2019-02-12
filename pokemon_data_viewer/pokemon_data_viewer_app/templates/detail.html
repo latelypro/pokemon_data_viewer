@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+        <h1>図鑑No.{{ full_data.no }}</h1>
+        <h1>{{ full_data.name }}</h1>
+        <div class="chart">
+            <canvas id="data_chart"></canvas>
+        </div>
+</div>
+{% endblock content%}
+{% block script %}
+<script>
+// 色の設定
+var colorSet = {
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+};
+// 色のRGB変換
+var color = Chart.helpers.color;
+/*
+ * チャートの初期設定
+ */
+var config = {
+    type: 'radar',
+    data: {
+        labels: ["HP", "こうげき", "ぼうぎょ", "すばやさ", "とくこう", "とくぼう"],
+        datasets: [{
+            label: "種族値",
+            backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+            borderColor: colorSet.red,
+            pointBackgroundColor: colorSet.red,
+            data: [{{ full_data.hp }}, {{ full_data.attack }}, {{ full_data.defence }}, {{full_data.speed}}, {{full_data.spAttack}}, {{full_data.spDeffence}}]
+        }, {
+            label: "平均",
+            backgroundColor: color(colorSet.blue).alpha(0.5).rgbString(),
+            borderColor: colorSet.blue,
+            pointBackgroundColor: colorSet.blue,
+            data: [{{ ave_hp }}, {{ ave_atk }}, {{ ave_def }}, {{ ave_spd }}, {{ave_spatk}}, {{ave_spdef}}]
+    },
+        ]
+    },
+    options: {
+        animation:false,
+        showTooltips: false,
+        legend: { position: 'bottom' },
+        title: {
+            display: true,
+            fontSize:20,
+            fontColor:'#666',
+            text: '種族値'
+        },
+        scale: {
+            display: true,
+            pointLabels: {
+                fontSize: 15,
+                fontColor: colorSet.yellow
+            },
+            ticks: {
+                display: true,
+                fontSize: 12,
+                fontColor: colorSet.green,
+                min: 0,
+                max: 300,
+                beginAtZero: true
+            },
+            gridLines: {
+                display: true,
+            }
+        }
+    }
+};
+
+/*
+ * チャートの作成
+ */
+var myRadar = new Chart($("#data_chart"), config);
+</script>
+{% endblock script %}
